@@ -16,6 +16,59 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) 
 }
 ```
 
+# Custom Usage
+
+Create cropped image result in external storage
+```kotlin
+val externalCropRequest = CropRequest.Auto(sourceUri = uri, requestCode = RC_CROP_IMAGE)
+```
+
+Create cropped image result in cache storage
+```kotlin
+val cacheCropRequest = CropRequest.Auto(
+     sourceUri = uri,
+     requestCode = RC_CROP_IMAGE,
+     storageType = StorageType.CACHE
+)
+```
+
+If you want to create destination file by manually
+
+```kotlin
+val destinationUri = ...
+val manuelCropRequest = CropRequest.Manuel(
+    sourceUri = uri,
+    destinationUri = destinationUri,
+    requestCode = RC_CROP_IMAGE
+)
+```
+
+If you want to exclude some specific aspect ratio from bottom aspect ratio list view.
+
+```kotlin
+val excludeAspectRatiosCropRequest = CropRequest.Manuel(
+    sourceUri = uri,     
+    destinationUri = destinationUri,
+    requestCode = RC_CROP_IMAGE,
+    excludedAspectRatios = arrayListOf(AspectRatio.ASPECT_FREE)
+)
+```
+
+If you want to give specific theme as accent color.
+```kotlin
+val themeCropRequest = CropRequest.Manuel(
+    sourceUri = uri,
+    destinationUri = destinationUri,
+    requestCode = RC_CROP_IMAGE,
+    croppyTheme = CroppyTheme(R.color.blue)
+)
+```
+
+```kotlin
+//Start croppy with your custom request.
+Croppy.start(this, cropRequest)
+```
+
 # Demo
 <img src="https://github.com/lyrebirdstudio/Croppy/blob/master/art/artgif.gif?raw=true"/>
 
