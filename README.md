@@ -1,6 +1,8 @@
 # Croppy
-
 <img src="https://raw.githubusercontent.com/lyrebirdstudio/Croppy/master/art/art.png"/>
+
+# Demo
+<img src="https://github.com/lyrebirdstudio/Croppy/blob/master/art/artgif.gif?raw=true"/>
 
 # Features
 
