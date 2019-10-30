@@ -32,7 +32,7 @@ val cacheCropRequest = CropRequest.Auto(
 )
 ```
 
-If you want to create destination file by manually
+If you want to create destination file manually
 
 ```kotlin
 val destinationUri = ...
@@ -75,25 +75,25 @@ Croppy.start(this, cropRequest)
 # Features
 
 ### Double tap focus 👆👆
-It zoom-in to the touch points on double tap. Restore to default state when user double tap on max scale state.
+It zooms-in to the touch points on double tap. Restores default state when user double taps on max scale state.
 
 ### Pinch Zoom 👌
-Zoom in and out with yout two finger.
+Zoom in and out with two finger.
 
 ### Free Mode 🤟
-You can crop you image in free mode. In any size.
+You can crop your image in free mode. In any size.
 
 ### Aspect Ratio Mode 📱
-Enhanced aspect ratio mode will helps you while cropping. Aspect ratio will be fixed while you playing with cropper. So in your social media apps, it will helps you to crop in fixed size (instagram, facebook, twitter, 16:9, 1:2, 3:2 and more..)
+Enhanced aspect ratio mode will help you while cropping. Aspect ratio will be fixed while you play with cropper. So for your social media apps, it will help you to crop in fixed size (instagram, facebook, twitter, 16:9, 1:2, 3:2 and more..)
 
 ### Size Displayer 🔟
-While you scaling your image, size displayer displays the bitmap size reactively. It will give the user smoother experience.
+While you scale your image, size displayer indicates the bitmap size reactively. It will provide a smoother experience to the user.
 
 ### Auto Centered 😍
-What ever you do while cropping, we centerized the bitmap with animation. Smoother experience for user.
+What ever you do while cropping, we center the bitmap with animation. Smoother experience for user.
 
 ### Animations 🌟 
-We user animation everywhere in this cropper. User zoom-out too much? We zoom-in back with animation. User scroll image out of borders? We scroll it back with animation.
+We use animation everywhere in this cropper. User zoomed-out too much? We zoom back in with animation. User scrolled image out of borders? We scroll it back with animation.
 
 # Setup
 ```groovy
