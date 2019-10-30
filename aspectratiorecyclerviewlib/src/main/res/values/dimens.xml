@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="aspect_lib_padding_4dp">4dp</dimen>
+    <dimen name="aspect_lib_padding_8dp">8dp</dimen>
+    <dimen name="aspect_lib_padding_16dp">16dp</dimen>
+    <dimen name="aspect_lib_padding_24dp">24dp</dimen>
+
+    <dimen name="aspect_lib_margin_4dp">4dp</dimen>
+    <dimen name="aspect_lib_margin_8dp">8dp</dimen>
+    <dimen name="aspect_lib_margin_16dp">16dp</dimen>
+    <dimen name="aspect_lib_margin_24dp">24dp</dimen>
+
+    <dimen name="aspect_lib_text_size_x_small">10sp</dimen>
+    <dimen name="aspect_lib_text_size_small">12sp</dimen>
+    <dimen name="aspect_lib_text_size_regular">14sp</dimen>
+    <dimen name="aspect_lib_text_size_medium">16sp</dimen>
+    <dimen name="aspect_lib_text_size_large">18sp</dimen>
+    <dimen name="aspect_lib_text_size_x_large">20sp</dimen>
+
+    <dimen name="aspect_lib_shape_radius">3dp</dimen>
+
+
+    <dimen name="margin_bottom_aspect_ratio_icon">8dp</dimen>
+
+    <!-- Aspect dimens -->
+    <dimen name="size_aspect_recyclerview">96dp</dimen>
+    <dimen name="size_aspect_social_media_icon">16dp</dimen>
+
+    <dimen name="width_aspect_free">24dp</dimen>
+    <dimen name="height_aspect_free">24dp</dimen>
+
+    <dimen name="width_aspect_ins_1_1">40dp</dimen>
+    <dimen name="height_aspect_ins_1_1">40dp</dimen>
+
+    <dimen name="width_aspect_ins_4_5">40dp</dimen>
+    <dimen name="height_aspect_ins_4_5">50dp</dimen>
+
+    <dimen name="width_aspect_ins_story">32dp</dimen>
+    <dimen name="height_aspect_ins_story">50dp</dimen>
+
+    <dimen name="width_aspect_5_4">50dp</dimen>
+    <dimen name="height_aspect_5_4">40dp</dimen>
+
+    <dimen name="width_aspect_3_4">30dp</dimen>
+    <dimen name="height_aspect_3_4">40dp</dimen>
+
+    <dimen name="width_aspect_4_3">40dp</dimen>
+    <dimen name="height_aspect_4_3">30dp</dimen>
+
+    <dimen name="width_aspect_face_post">56dp</dimen>
+    <dimen name="height_aspect_face_post">30dp</dimen>
+
+    <dimen name="width_aspect_face_cover">56dp</dimen>
+    <dimen name="height_aspect_face_cover">28dp</dimen>
+
+    <dimen name="width_aspect_pin_post">40dp</dimen>
+    <dimen name="height_aspect_pin_post">56dp</dimen>
+
+    <dimen name="width_aspect_3_2">48dp</dimen>
+    <dimen name="height_aspect_3_2">30dp</dimen>
+
+    <dimen name="width_aspect_9_16">26dp</dimen>
+    <dimen name="height_aspect_9_16">48dp</dimen>
+
+    <dimen name="width_aspect_16_9">48dp</dimen>
+    <dimen name="height_aspect_16_9">26dp</dimen>
+
+    <dimen name="width_aspect_1_2">24dp</dimen>
+    <dimen name="height_aspect_1_2">48dp</dimen>
+
+    <dimen name="width_aspect_you_cover">48dp</dimen>
+    <dimen name="height_aspect_you_cover">26dp</dimen>
+
+    <dimen name="width_aspect_twit_post">48dp</dimen>
+    <dimen name="height_aspect_twit_post">26dp</dimen>
+
+    <dimen name="width_aspect_twit_header">48dp</dimen>
+    <dimen name="height_aspect_twit_header">20dp</dimen>
+
+    <dimen name="width_aspect_a_4">36dp</dimen>
+    <dimen name="height_aspect_a_4">56dp</dimen>
+
+    <dimen name="width_aspect_a_5">24dp</dimen>
+    <dimen name="height_aspect_a_5">40dp</dimen>
+</resources>

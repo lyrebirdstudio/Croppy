@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_24dp">24dp</dimen>
+
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+
+    <dimen name="text_size_x_small">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_regular">14sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_x_large">20sp</dimen>
+
+    <!-- Crop overlay view-->
+    <dimen name="margin_max_crop_rect">24dp</dimen>
+
+    <dimen name="corner_toggle_width">6dp</dimen>
+
+    <dimen name="corner_toggle_length">32dp</dimen>
+
+    <dimen name="edge_toggle_length">48dp</dimen>
+
+    <dimen name="grid_line_width">1dp</dimen>
+
+    <dimen name="touch_threshold">16dp</dimen>
+
+    <dimen name="min_rect">56dp</dimen>
+
+    <!-- Toolbar size icons -->
+    <dimen name="size_button_lock_aspect">48dp</dimen>
+
+    <dimen name="height_button_bitmap_dimension">40dp</dimen>
+    <dimen name="width_button_bitmap_dimension">80dp</dimen>
+
+    <!-- Input View Size -->
+    <dimen name="text_size_input">24sp</dimen>
+
+</resources>

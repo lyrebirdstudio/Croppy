@@ -1,0 +1,2 @@
+include ':app', ':croppylib', ':aspectratiorecyclerviewlib'
+rootProject.name='Croppy'

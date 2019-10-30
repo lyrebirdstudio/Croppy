@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">aspectratiorecyclerviewlib</string>
+
+    <!-- Aspect ratio names -->
+    <string name="aspect_free">Free</string>
+    <string name="aspect_ins_1_1">Ins 1:1</string>
+    <string name="aspect_ins_4_5">Ins 4:5</string>
+    <string name="aspect_ins_story">Story</string>
+    <string name="aspect_5_4">5:4</string>
+    <string name="aspect_3_4">3:4</string>
+    <string name="aspect_4_3">4:3</string>
+    <string name="aspect_face_post">Post</string>
+    <string name="aspect_face_cover">Cover</string>
+    <string name="aspect_pin_post">Post</string>
+    <string name="aspect_3_2">3:2</string>
+    <string name="aspect_9_16">9:16</string>
+    <string name="aspect_16_9">16:9</string>
+    <string name="aspect_1_2">1:2</string>
+    <string name="aspect_you_cover">Cover</string>
+    <string name="aspect_twit_post">Post</string>
+    <string name="aspect_twit_header">Header</string>
+    <string name="aspect_a_4">A4</string>
+    <string name="aspect_a_5">A5</string>
+</resources>

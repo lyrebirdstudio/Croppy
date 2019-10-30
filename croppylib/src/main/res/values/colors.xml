@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#1C1C1E</color>
+    <color name="colorPrimaryDark">#0C0C0E</color>
+    <color name="colorAccent">#3A98FA</color>
+
+    <color name="colorCropToolbar">#1C1C1E</color>
+
+    <color name="colorCropAlpha">#AB1C1C1E</color>
+    <color name="colorCropBackground">#1C1C1E</color>
+
+    <color name="colorSizeButtonUnselected">#303033</color>
+    <color name="colorSizeButtonSelected">#329AFF</color>
+
+    <color name="colorDisableLayout">#CD1C1C1E</color>,
+
+    <color name="white">#ffffff</color>
+    <color name="blue">#329AFF</color>
+</resources>

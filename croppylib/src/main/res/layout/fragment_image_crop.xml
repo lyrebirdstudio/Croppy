@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewState"
+            type="com.lyrebirdstudio.croppylib.state.CropFragmentViewState" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorCropBackground">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:background="@color/colorCropToolbar"
+                android:clickable="true"
+                android:focusable="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageViewCancel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:padding="@dimen/padding_16dp"
+                            app:srcCompat="@drawable/ic_cancel"
+                            app:tint="@color/white" />
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/buttonSizeWidth"
+                                android:layout_width="@dimen/width_button_bitmap_dimension"
+                                android:layout_height="@dimen/height_button_bitmap_dimension"
+                                android:layout_marginRight="@dimen/margin_4dp"
+                                android:background="@drawable/background_rounded_text"
+                                android:gravity="center"
+                                android:maxLength="6"
+                                android:text="@{viewState.getWidthButtonText(context)}"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/buttonSizeHeight"
+                                android:layout_width="@dimen/width_button_bitmap_dimension"
+                                android:layout_height="@dimen/height_button_bitmap_dimension"
+                                android:layout_marginLeft="@dimen/margin_4dp"
+                                android:background="@drawable/background_rounded_text"
+                                android:gravity="center"
+                                android:maxLength="6"
+                                android:text="@{viewState.getHeightButtonText(context)}"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imageViewApply"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:clickable="true"
+                            android:padding="@dimen/padding_16dp"
+                            app:srcCompat="@drawable/ic_check"
+                            app:tint="@color/white" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <com.lyrebirdstudio.croppylib.cropview.CropView
+                android:id="@+id/cropView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/recyclerViewAspectRatios"
+                android:layout_marginTop="?attr/actionBarSize" />
+
+            <com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.AspectRatioRecyclerView
+                android:id="@+id/recyclerViewAspectRatios"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_aspect_recyclerview"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:paddingTop="@dimen/padding_8dp"
+                android:paddingBottom="@dimen/padding_8dp" />
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

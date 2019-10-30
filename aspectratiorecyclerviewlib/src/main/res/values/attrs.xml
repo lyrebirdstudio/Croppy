@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AspectRatioRecyclerView">
+        <attr name="activeColor" format="color" />
+        <attr name="passiveColor" format="color" />
+        <attr name="socialActiveColor" format="color" />
+        <attr name="socialPassiveColor" format="color" />
+    </declare-styleable>
+</resources>
