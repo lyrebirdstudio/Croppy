@@ -10,7 +10,7 @@ Croppy.start(this, cropRequest)
 ```kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
       super.onActivityResult(requestCode, resultCode, data)
-      if (requestCode == RC_CROP_IMAGE) {
+      if (requestCode == 101) {
            imageview.setImageURI(data.data)
      }
 }
