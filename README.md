@@ -1,6 +1,22 @@
 # Croppy
 <img src="https://raw.githubusercontent.com/lyrebirdstudio/Croppy/master/art/art.png"/>
 
+# Setup
+```groovy
+allprojects {
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+```groovy
+dependencies {
+      implementation 'com.github.lyrebirdstudio:Croppy:0.1'
+}
+```
+
+
 # Demo
 <img src="https://github.com/lyrebirdstudio/Croppy/blob/master/art/artgif.gif?raw=true"/>
 
