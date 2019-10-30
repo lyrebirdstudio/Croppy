@@ -16,6 +16,22 @@ dependencies {
 }
 ```
 
+# Basic Usage
+```kotlin
+//Start croppy (source uri is the original image.)
+val cropRequest = CropRequest.Auto(sourceUri = uri, requestCode = 101)
+Croppy.start(this, cropRequest)
+```
+```kotlin
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+      super.onActivityResult(requestCode, resultCode, data)
+      if (requestCode == RC_CROP_IMAGE) {
+           imageview.setImageURI(data.data)
+     }
+}
+```
+
+
 
 # Demo
 <img src="https://github.com/lyrebirdstudio/Croppy/blob/master/art/artgif.gif?raw=true"/>
