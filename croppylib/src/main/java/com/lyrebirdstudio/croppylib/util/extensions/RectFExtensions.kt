@@ -9,6 +9,7 @@ import com.lyrebirdstudio.croppylib.util.model.AnimatableRectF
 import com.lyrebirdstudio.croppylib.util.model.Corner
 import com.lyrebirdstudio.croppylib.util.model.Edge
 import com.lyrebirdstudio.croppylib.util.model.SizeF
+import kotlin.math.hypot
 
 fun AnimatableRectF.animateTo(target: AnimatableRectF, onUpdate: (RectF) -> Unit = {}) {
 
@@ -89,5 +90,5 @@ fun RectF.getCornerTouch(touchEvent: MotionEvent, touchThreshold: Float = 50f): 
 }
 
 fun RectF.getHypotenus(): Float {
-    return Math.hypot(height().toDouble(), width().toDouble()).toFloat()
+    return hypot(height().toDouble(), width().toDouble()).toFloat()
 }
