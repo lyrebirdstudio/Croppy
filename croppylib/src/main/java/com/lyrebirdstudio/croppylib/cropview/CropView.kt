@@ -315,10 +315,10 @@ class CropView @JvmOverloads constructor(
                 val corner = cropRect.getCornerTouch(event, touchThreshold)
                 val edge = cropRect.getEdgeTouch(event, touchThreshold)
 
-                when {
-                    isCorner(corner) -> draggingState = DraggingCorner(corner)
-                    isEdge(edge) -> draggingState = DraggingEdge(edge)
-                    else -> draggingState = DraggingState.DraggingBitmap
+                draggingState = when {
+                    isCorner(corner) -> DraggingCorner(corner)
+                    isEdge(edge) -> DraggingEdge(edge)
+                    else -> DraggingState.DraggingBitmap
                 }
 
                 calculateMinRect()
