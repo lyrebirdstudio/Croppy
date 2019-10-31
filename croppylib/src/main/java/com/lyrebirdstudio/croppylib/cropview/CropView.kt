@@ -15,8 +15,6 @@ import com.lyrebirdstudio.croppylib.util.model.DraggingState.DraggingEdge
 import com.lyrebirdstudio.croppylib.util.model.Edge.*
 import com.lyrebirdstudio.croppylib.util.util.min
 import kotlin.math.max
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
 import android.graphics.Bitmap
 import androidx.core.content.ContextCompat
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio.*
@@ -27,7 +25,6 @@ import com.lyrebirdstudio.croppylib.util.extensions.*
 import com.lyrebirdstudio.croppylib.util.model.*
 import java.lang.IllegalStateException
 import kotlin.math.roundToInt
-
 
 class CropView @JvmOverloads constructor(
     context: Context,
@@ -292,8 +289,8 @@ class CropView @JvmOverloads constructor(
     private val bitmapGestureHandler = BitmapGestureHandler(context, bitmapGestureListener)
 
     init {
-        setWillNotDraw(false);
-        setLayerType(LAYER_TYPE_HARDWARE, null);
+        setWillNotDraw(false)
+        setLayerType(LAYER_TYPE_HARDWARE, null)
         setBackgroundColor(ContextCompat.getColor(context, R.color.colorCropBackground))
     }
 
