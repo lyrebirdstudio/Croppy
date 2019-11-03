@@ -33,7 +33,7 @@ class ImageCropViewModel(val app: Application) : AndroidViewModel(app) {
 
         BitmapUtils
             .resize(cropRequest.sourceUri, app.applicationContext)
-            .subscribeOn(Schedulers.io())
+            .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(Consumer { resizedBitmapLiveData.value = it })
             .also { compositeDisposable.add(it) }
