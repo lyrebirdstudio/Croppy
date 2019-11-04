@@ -2,25 +2,22 @@ package com.lyrebirdstudio.croppylib.ui
 
 import android.app.Application
 import android.graphics.RectF
-import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio
 import com.lyrebirdstudio.croppylib.main.CropRequest
 import com.lyrebirdstudio.croppylib.state.CropFragmentViewState
-import com.lyrebirdstudio.croppylib.util.bitmap.BitmapResizer
+import com.lyrebirdstudio.croppylib.util.bitmap.BitmapUtils
 import com.lyrebirdstudio.croppylib.util.bitmap.ResizedBitmap
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
-class ImageCropViewModel(app: Application) : AndroidViewModel(app) {
+class ImageCropViewModel(val app: Application) : AndroidViewModel(app) {
 
     private val compositeDisposable = CompositeDisposable()
-
-    private val bitmapResizer = BitmapResizer(app.applicationContext)
 
     private var cropRequest: CropRequest? = null
 
@@ -34,9 +31,9 @@ class ImageCropViewModel(app: Application) : AndroidViewModel(app) {
     fun setCropRequest(cropRequest: CropRequest) {
         this.cropRequest = cropRequest
 
-        bitmapResizer
-            .resize(cropRequest.sourceUri)
-            .subscribeOn(Schedulers.io())
+        BitmapUtils
+            .resize(cropRequest.sourceUri, app.applicationContext)
+            .subscribeOn(Schedulers.computation())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(Consumer { resizedBitmapLiveData.value = it })
             .also { compositeDisposable.add(it) }
