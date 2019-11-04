@@ -36,7 +36,7 @@ If you want to create destination file manually
 
 ```kotlin
 val destinationUri = ...
-val manuelCropRequest = CropRequest.Manuel(
+val manuelCropRequest = CropRequest.Manual(
     sourceUri = uri,
     destinationUri = destinationUri,
     requestCode = RC_CROP_IMAGE
@@ -46,7 +46,7 @@ val manuelCropRequest = CropRequest.Manuel(
 If you want to exclude some specific aspect ratio from bottom aspect ratio list view.
 
 ```kotlin
-val excludeAspectRatiosCropRequest = CropRequest.Manuel(
+val excludeAspectRatiosCropRequest = CropRequest.Manual(
     sourceUri = uri,     
     destinationUri = destinationUri,
     requestCode = RC_CROP_IMAGE,
@@ -56,7 +56,7 @@ val excludeAspectRatiosCropRequest = CropRequest.Manuel(
 
 If you want to give specific theme as accent color.
 ```kotlin
-val themeCropRequest = CropRequest.Manuel(
+val themeCropRequest = CropRequest.Manual(
     sourceUri = uri,
     destinationUri = destinationUri,
     requestCode = RC_CROP_IMAGE,
