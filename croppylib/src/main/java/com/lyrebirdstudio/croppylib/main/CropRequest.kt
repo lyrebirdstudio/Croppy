@@ -15,7 +15,7 @@ open class CropRequest(
 ) : Parcelable {
 
     @Parcelize
-    class Manuel(
+    class Manual(
         override val sourceUri: Uri,
         val destinationUri: Uri,
         override val requestCode: Int,

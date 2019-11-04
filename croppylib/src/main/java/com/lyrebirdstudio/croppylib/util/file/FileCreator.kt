@@ -2,20 +2,24 @@ package com.lyrebirdstudio.croppylib.util.file
 
 import android.content.Context
 import android.os.Environment
-import com.lyrebirdstudio.croppylib.main.StorageType.*
+import com.lyrebirdstudio.croppylib.main.StorageType.CACHE
+import com.lyrebirdstudio.croppylib.main.StorageType.EXTERNAL
 import java.io.File
 
 
-class FileCreator(val context: Context) {
+object FileCreator {
 
-    fun createFile(fileOperationRequest: FileOperationRequest): File {
+    fun createFile(fileOperationRequest: FileOperationRequest, context: Context): File {
         return when (fileOperationRequest.storageType) {
-            CACHE -> createCacheFile(fileOperationRequest)
-            EXTERNAL -> createExternalFile(fileOperationRequest)
+            CACHE -> createCacheFile(fileOperationRequest, context)
+            EXTERNAL -> createExternalFile(fileOperationRequest, context)
         }
     }
 
-    private fun createCacheFile(fileOperationRequest: FileOperationRequest): File {
+    private fun createCacheFile(
+        fileOperationRequest: FileOperationRequest,
+        context: Context
+    ): File {
         val outputDir = context.cacheDir
         return File.createTempFile(
             "img",
@@ -24,7 +28,10 @@ class FileCreator(val context: Context) {
         )
     }
 
-    private fun createExternalFile(fileOperationRequest: FileOperationRequest): File {
+    private fun createExternalFile(
+        fileOperationRequest: FileOperationRequest,
+        context: Context
+    ): File {
         val path = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val parentFolder = File(path, "croppy")
             .also { it.mkdirs() }
