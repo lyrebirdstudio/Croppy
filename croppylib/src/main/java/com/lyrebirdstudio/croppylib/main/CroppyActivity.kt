@@ -11,8 +11,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.lyrebirdstudio.croppylib.R
 import com.lyrebirdstudio.croppylib.databinding.ActivityCroppyBinding
 import com.lyrebirdstudio.croppylib.ui.ImageCropFragment
-import com.lyrebirdstudio.croppylib.ui.ImageCropViewModel
-import com.lyrebirdstudio.croppylib.util.bitmap.BitmapSaver
 
 class CroppyActivity : AppCompatActivity() {
 

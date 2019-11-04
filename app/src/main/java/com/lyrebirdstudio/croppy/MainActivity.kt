@@ -1,17 +1,17 @@
 package com.lyrebirdstudio.croppy
 
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import androidx.databinding.DataBindingUtil
-import com.lyrebirdstudio.croppy.databinding.ActivityMainBinding
-import com.lyrebirdstudio.croppylib.main.CropRequest
-import com.lyrebirdstudio.croppylib.Croppy
 import android.content.ContentResolver
 import android.content.Intent
+import android.net.Uri
+import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
+import androidx.databinding.DataBindingUtil
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio
+import com.lyrebirdstudio.croppy.databinding.ActivityMainBinding
+import com.lyrebirdstudio.croppylib.Croppy
+import com.lyrebirdstudio.croppylib.main.CropRequest
 import com.lyrebirdstudio.croppylib.main.CroppyTheme
 import com.lyrebirdstudio.croppylib.main.StorageType
 import com.lyrebirdstudio.croppylib.util.file.FileCreator
@@ -65,8 +65,8 @@ class MainActivity : AppCompatActivity() {
 
         // Save to given destination uri.
         val destinationUri =
-            FileCreator(this.applicationContext)
-                .createFile(FileOperationRequest.createRandom())
+            FileCreator
+                .createFile(FileOperationRequest.createRandom(), application.applicationContext)
                 .toUri()
 
         val manualCropRequest = CropRequest.Manual(

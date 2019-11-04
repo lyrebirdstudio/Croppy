@@ -98,7 +98,6 @@ class ImageCropFragment : Fragment() {
         private const val KEY_BUNDLE_CROP_REQUEST = "KEY_BUNDLE_CROP_REQUEST"
 
         @JvmStatic
-        @JvmOverloads
         fun newInstance(cropRequest: CropRequest): ImageCropFragment {
             return ImageCropFragment().apply {
                 arguments = Bundle().apply {
