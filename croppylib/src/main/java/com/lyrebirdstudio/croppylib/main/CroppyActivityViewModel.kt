@@ -31,7 +31,7 @@ class CroppyActivityViewModel(application: Application) : AndroidViewModel(appli
     fun saveBitmap(cropRequest: CropRequest, croppedBitmapData: CroppedBitmapData) {
 
         when (cropRequest) {
-            is CropRequest.Manuel -> {
+            is CropRequest.Manual -> {
                 disposable.add(bitmapSaver
                     .saveBitmap(croppedBitmapData, cropRequest.destinationUri.toFile())
                     .subscribeOn(Schedulers.io())

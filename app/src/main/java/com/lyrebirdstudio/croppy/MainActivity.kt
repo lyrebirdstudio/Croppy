@@ -69,20 +69,20 @@ class MainActivity : AppCompatActivity() {
                 .createFile(FileOperationRequest.createRandom())
                 .toUri()
 
-        val manuelCropRequest = CropRequest.Manuel(
+        val manualCropRequest = CropRequest.Manual(
             sourceUri = uri,
             destinationUri = destinationUri,
             requestCode = RC_CROP_IMAGE
         )
 
-        val excludeAspectRatiosCropRequest = CropRequest.Manuel(
+        val excludeAspectRatiosCropRequest = CropRequest.Manual(
             sourceUri = uri,
             destinationUri = destinationUri,
             requestCode = RC_CROP_IMAGE,
             excludedAspectRatios = arrayListOf(AspectRatio.ASPECT_FREE)
         )
 
-        val themeCropRequest = CropRequest.Manuel(
+        val themeCropRequest = CropRequest.Manual(
             sourceUri = uri,
             destinationUri = destinationUri,
             requestCode = RC_CROP_IMAGE,
