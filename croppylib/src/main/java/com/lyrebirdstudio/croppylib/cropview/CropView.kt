@@ -13,10 +13,7 @@ import com.lyrebirdstudio.croppylib.util.model.Corner.NONE
 import com.lyrebirdstudio.croppylib.util.model.DraggingState.DraggingCorner
 import com.lyrebirdstudio.croppylib.util.model.DraggingState.DraggingEdge
 import com.lyrebirdstudio.croppylib.util.model.Edge.*
-import com.lyrebirdstudio.croppylib.util.util.min
 import kotlin.math.max
-import android.graphics.PorterDuff
-import android.graphics.PorterDuffXfermode
 import android.graphics.Bitmap
 import androidx.core.content.ContextCompat
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio.*
@@ -26,8 +23,9 @@ import com.lyrebirdstudio.croppylib.main.CroppyTheme
 import com.lyrebirdstudio.croppylib.util.extensions.*
 import com.lyrebirdstudio.croppylib.util.model.*
 import java.lang.IllegalStateException
+import kotlin.math.hypot
+import kotlin.math.min
 import kotlin.math.roundToInt
-
 
 class CropView @JvmOverloads constructor(
     context: Context,
@@ -292,8 +290,8 @@ class CropView @JvmOverloads constructor(
     private val bitmapGestureHandler = BitmapGestureHandler(context, bitmapGestureListener)
 
     init {
-        setWillNotDraw(false);
-        setLayerType(LAYER_TYPE_HARDWARE, null);
+        setWillNotDraw(false)
+        setLayerType(LAYER_TYPE_HARDWARE, null)
         setBackgroundColor(ContextCompat.getColor(context, R.color.colorCropBackground))
     }
 
@@ -318,10 +316,10 @@ class CropView @JvmOverloads constructor(
                 val corner = cropRect.getCornerTouch(event, touchThreshold)
                 val edge = cropRect.getEdgeTouch(event, touchThreshold)
 
-                when {
-                    isCorner(corner) -> draggingState = DraggingCorner(corner)
-                    isEdge(edge) -> draggingState = DraggingEdge(edge)
-                    else -> draggingState = DraggingState.DraggingBitmap
+                draggingState = when {
+                    isCorner(corner) -> DraggingCorner(corner)
+                    isEdge(edge) -> DraggingEdge(edge)
+                    else -> DraggingState.DraggingBitmap
                 }
 
                 calculateMinRect()
@@ -651,8 +649,8 @@ class CropView @JvmOverloads constructor(
         val heightRatio: Float
 
         if (selectedAspectRatio == ASPECT_FREE) {
-            widthRatio = bitmapRect.width() / Math.min(bitmapRect.width(), bitmapRect.height())
-            heightRatio = bitmapRect.height() / Math.min(bitmapRect.width(), bitmapRect.height())
+            widthRatio = bitmapRect.width() / min(bitmapRect.width(), bitmapRect.height())
+            heightRatio = bitmapRect.height() / min(bitmapRect.width(), bitmapRect.height())
         } else {
             widthRatio = selectedAspectRatio.widthRatio
             heightRatio = selectedAspectRatio.heightRatio
@@ -712,7 +710,7 @@ class CropView @JvmOverloads constructor(
      * Initializes bitmap matrix
      */
     private fun initializeBitmapMatrix() {
-        val scale = Math.min(viewWidth / bitmapRect.width(), viewHeight / bitmapRect.height())
+        val scale = min(viewWidth / bitmapRect.width(), viewHeight / bitmapRect.height())
         bitmapMatrix.setScale(scale, scale)
 
         val translateX = (viewWidth - bitmapRect.width() * scale) / 2f + marginInPixelSize
@@ -777,7 +775,7 @@ class CropView @JvmOverloads constructor(
                             return
                         }
 
-                        val motionHypo = Math.hypot(
+                        val motionHypo = hypot(
                             (motionEvent.y - cropRect.bottom).toDouble(),
                             (motionEvent.x - cropRect.left).toDouble()
                         ).toFloat()
@@ -795,7 +793,7 @@ class CropView @JvmOverloads constructor(
                             return
                         }
 
-                        val motionHypo = Math.hypot(
+                        val motionHypo = hypot(
                             (cropRect.bottom - motionEvent.y).toDouble(),
                             (cropRect.right - motionEvent.x).toDouble()
                         ).toFloat()
@@ -812,7 +810,7 @@ class CropView @JvmOverloads constructor(
                             return
                         }
 
-                        val motionHypo = Math.hypot(
+                        val motionHypo = hypot(
                             (cropRect.top - motionEvent.y).toDouble(),
                             (cropRect.left - motionEvent.x).toDouble()
                         ).toFloat()
@@ -830,7 +828,7 @@ class CropView @JvmOverloads constructor(
                             return
                         }
 
-                        val motionHypo = Math.hypot(
+                        val motionHypo = hypot(
                             (cropRect.top - motionEvent.y).toDouble(),
                             (cropRect.right - motionEvent.x).toDouble()
                         ).toFloat()
@@ -983,7 +981,7 @@ class CropView @JvmOverloads constructor(
             ASPECT -> {
                 val scaleWidth = minSize / cropRect.width()
                 val scaleHeight = minSize / cropRect.height()
-                val scale = Math.max(scaleWidth, scaleHeight)
+                val scale = max(scaleWidth, scaleHeight)
 
                 when (val state = draggingState) {
                     is DraggingEdge -> {
@@ -1061,10 +1059,10 @@ class CropView @JvmOverloads constructor(
                 val borderRect = RectF().apply {
                     val bitmapBorderRect = RectF()
                     bitmapMatrix.mapRect(bitmapBorderRect, bitmapRect)
-                    top = Math.max(bitmapBorderRect.top, viewRect.top)
-                    right = Math.min(bitmapBorderRect.right, viewRect.right)
-                    bottom = Math.min(bitmapBorderRect.bottom, viewRect.bottom)
-                    left = Math.max(bitmapBorderRect.left, viewRect.left)
+                    top = max(bitmapBorderRect.top, viewRect.top)
+                    right = min(bitmapBorderRect.right, viewRect.right)
+                    bottom = min(bitmapBorderRect.bottom, viewRect.bottom)
+                    left = max(bitmapBorderRect.left, viewRect.left)
                 }
 
                 when (val state = draggingState) {
@@ -1131,10 +1129,10 @@ class CropView @JvmOverloads constructor(
                 val borderRect = RectF().apply {
                     val bitmapBorderRect = RectF()
                     bitmapMatrix.mapRect(bitmapBorderRect, bitmapRect)
-                    top = Math.max(bitmapBorderRect.top, viewRect.top)
-                    right = Math.min(bitmapBorderRect.right, viewRect.right)
-                    bottom = Math.min(bitmapBorderRect.bottom, viewRect.bottom)
-                    left = Math.max(bitmapBorderRect.left, viewRect.left)
+                    top = max(bitmapBorderRect.top, viewRect.top)
+                    right = min(bitmapBorderRect.right, viewRect.right)
+                    bottom = min(bitmapBorderRect.bottom, viewRect.bottom)
+                    left = max(bitmapBorderRect.left, viewRect.left)
                 }
 
                 when (val state = draggingState) {
@@ -1151,7 +1149,7 @@ class CropView @JvmOverloads constructor(
                         when (state.edge) {
                             LEFT -> {
                                 leftScale = (cropRect.right - borderRect.left) / cropRect.width()
-                                val minScale = Math.min(leftScale, Math.min(topScale, bottomScale))
+                                val minScale = min(leftScale, min(topScale, bottomScale))
                                 val matrix = Matrix()
                                 matrix.setScale(
                                     minScale,
@@ -1163,7 +1161,7 @@ class CropView @JvmOverloads constructor(
                             }
                             TOP -> {
                                 topScale = (cropRect.bottom - borderRect.top) / cropRect.height()
-                                val minScale = Math.min(topScale, Math.min(leftScale, rightScale))
+                                val minScale = min(topScale, min(leftScale, rightScale))
                                 val matrix = Matrix()
                                 matrix.setScale(
                                     minScale,
@@ -1175,7 +1173,7 @@ class CropView @JvmOverloads constructor(
                             }
                             RIGHT -> {
                                 rightScale = (borderRect.right - cropRect.left) / cropRect.width()
-                                val minScale = Math.min(rightScale, Math.min(topScale, bottomScale))
+                                val minScale = min(rightScale, min(topScale, bottomScale))
                                 val matrix = Matrix()
                                 matrix.setScale(
                                     minScale,
@@ -1188,7 +1186,7 @@ class CropView @JvmOverloads constructor(
                             BOTTOM -> {
                                 bottomScale = (borderRect.bottom - cropRect.top) / cropRect.height()
                                 val minScale =
-                                    Math.min(bottomScale, Math.min(leftScale, rightScale))
+                                    min(bottomScale, min(leftScale, rightScale))
                                 val matrix = Matrix()
                                 matrix.setScale(
                                     minScale,
@@ -1290,7 +1288,7 @@ class CropView @JvmOverloads constructor(
     private fun calculateCenterTarget() {
         val heightScale = viewHeight / cropRect.height()
         val widthScale = viewWidth / cropRect.width()
-        val scale = Math.min(heightScale, widthScale)
+        val scale = min(heightScale, widthScale)
 
         val targetRectWidth = cropRect.width() * scale
         val targetRectHeight = cropRect.height() * scale
