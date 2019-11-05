@@ -15,6 +15,7 @@ import com.lyrebirdstudio.croppylib.util.model.DraggingState.DraggingEdge
 import com.lyrebirdstudio.croppylib.util.model.Edge.*
 import kotlin.math.max
 import android.graphics.Bitmap
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio.*
 import com.lyrebirdstudio.croppylib.ui.CroppedBitmapData
@@ -387,22 +388,29 @@ class CropView @JvmOverloads constructor(
      * Calculates bitmap rect and bitmap min rect.
      */
     fun setBitmap(bitmap: Bitmap?) {
-        this.bitmap = bitmap
+        if (measuredWidth > 0 && measuredHeight > 0) {
+            this.bitmap = bitmap
 
-        bitmapRect.set(
-            0f,
-            0f,
-            this.bitmap?.width?.toFloat() ?: 0f,
-            this.bitmap?.height?.toFloat() ?: 0f
-        )
+            bitmapRect.set(
+                0f,
+                0f,
+                this.bitmap?.width?.toFloat() ?: 0f,
+                this.bitmap?.height?.toFloat() ?: 0f
+            )
 
-        val bitmapMinRectSize = max(bitmapRect.width(), bitmapRect.height()) / MAX_SCALE
-        bitmapMinRect.set(0f, 0f, bitmapMinRectSize, bitmapMinRectSize)
+            val bitmapMinRectSize = max(bitmapRect.width(), bitmapRect.height()) / MAX_SCALE
+            bitmapMinRect.set(0f, 0f, bitmapMinRectSize, bitmapMinRectSize)
 
-        initialize()
+            initialize()
 
-        requestLayout()
-        invalidate()
+            requestLayout()
+            invalidate()
+        } else {
+            Log.i(
+                TAG,
+                "The measuredWidth and the measuredHeight must be greater than 0. It is not suitable to call setBitmap() before or during the measurement."
+            )
+        }
     }
 
     fun setTheme(croppyTheme: CroppyTheme) {
@@ -488,22 +496,25 @@ class CropView @JvmOverloads constructor(
      * Initialize
      */
     private fun initialize() {
+        if (measuredWidth > 0 && measuredHeight > 0) {
+            viewWidth = measuredWidth.toFloat() - (marginInPixelSize * 2)
 
-        viewWidth = measuredWidth.toFloat() - (marginInPixelSize * 2)
+            viewHeight = measuredHeight.toFloat() - (marginInPixelSize * 2)
 
-        viewHeight = measuredHeight.toFloat() - (marginInPixelSize * 2)
+            viewRect.set(0f, 0f, measuredWidth.toFloat(), measuredHeight.toFloat())
 
-        viewRect.set(0f, 0f, measuredWidth.toFloat(), measuredHeight.toFloat())
+            createMaskBitmap()
 
-        createMaskBitmap()
+            initializeBitmapMatrix()
 
-        initializeBitmapMatrix()
+            initializeCropRect()
 
-        initializeCropRect()
+            onInitialized?.invoke()
 
-        onInitialized?.invoke()
-
-        invalidate()
+            invalidate()
+        } else {
+            Log.i(TAG, "The measuredWidth and the measuredHeight must be greater than 0.")
+        }
     }
 
     /**
@@ -1429,6 +1440,8 @@ class CropView @JvmOverloads constructor(
     }
 
     companion object {
+
+        private val TAG = CropView::class.simpleName
 
         /**
          * Maximum scale for given bitmap
