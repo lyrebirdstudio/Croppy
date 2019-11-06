@@ -6,7 +6,8 @@ import com.lyrebirdstudio.aspectratiorecyclerviewlib.R
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.extensions.inflateAdapterItem
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.databinding.ItemAspectRatioBinding
 
-class AspectRatioListAdapter : RecyclerView.Adapter<AspectRatioListAdapter.AspectRatioItemViewHolder>() {
+class AspectRatioListAdapter :
+    RecyclerView.Adapter<AspectRatioListAdapter.AspectRatioItemViewHolder>() {
 
     var onItemSelected: ((AspectRatioItemViewState) -> Unit)? = null
 
@@ -49,7 +50,8 @@ class AspectRatioListAdapter : RecyclerView.Adapter<AspectRatioListAdapter.Aspec
                 parent: ViewGroup,
                 onItemSelected: ((AspectRatioItemViewState) -> Unit)?
             ): AspectRatioItemViewHolder {
-                val binding: ItemAspectRatioBinding = parent.inflateAdapterItem(R.layout.item_aspect_ratio)
+                val binding: ItemAspectRatioBinding =
+                    parent.inflateAdapterItem(R.layout.item_aspect_ratio)
                 return AspectRatioItemViewHolder(binding, onItemSelected)
             }
         }

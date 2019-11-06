@@ -60,7 +60,11 @@ object BitmapUtils {
                 resultOptions
             )
 
-            resizedBitmap = resizedBitmap?.rotateBitmap(getOrientation(context.contentResolver.openInputStream(uri)))
+            resizedBitmap = resizedBitmap?.rotateBitmap(
+                getOrientation(
+                    context.contentResolver.openInputStream(uri)
+                )
+            )
 
             it.onSuccess(ResizedBitmap(resizedBitmap))
         }

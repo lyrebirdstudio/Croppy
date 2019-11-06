@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.lyrebirdstudio.croppylib.main.CropRequest
 import com.lyrebirdstudio.croppylib.R
 import com.lyrebirdstudio.croppylib.databinding.FragmentImageCropBinding
-import com.lyrebirdstudio.croppylib.util.delegate.inflate
+import com.lyrebirdstudio.croppylib.main.CropRequest
 import com.lyrebirdstudio.croppylib.state.CropFragmentViewState
+import com.lyrebirdstudio.croppylib.util.delegate.inflate
 
 class ImageCropFragment : Fragment() {
 

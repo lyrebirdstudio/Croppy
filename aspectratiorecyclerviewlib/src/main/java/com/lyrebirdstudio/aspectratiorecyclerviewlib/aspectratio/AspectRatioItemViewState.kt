@@ -1,7 +1,6 @@
 package com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio
 
 import android.content.Context
-import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.GradientDrawable.RECTANGLE
@@ -19,12 +18,13 @@ data class AspectRatioItemViewState(
             GradientDrawable.Orientation.BL_TR,
             intArrayOf()
         ).apply {
-            cornerRadius = context.resources.getDimensionPixelSize(R.dimen.aspect_lib_shape_radius).toFloat()
+            cornerRadius =
+                context.resources.getDimensionPixelSize(R.dimen.aspect_lib_shape_radius).toFloat()
             shape = RECTANGLE
         }
         when (isSelected) {
             true -> backgroundDrawable.setColor(aspectRatioItem.activeColor)
-            false -> backgroundDrawable.setColor( aspectRatioItem.passiveColor)
+            false -> backgroundDrawable.setColor(aspectRatioItem.passiveColor)
         }
 
         return backgroundDrawable
@@ -37,7 +37,7 @@ data class AspectRatioItemViewState(
     fun getItemTextColor(): Int {
         return when (isSelected) {
             true -> aspectRatioItem.activeColor
-            false ->  aspectRatioItem.passiveColor
+            false -> aspectRatioItem.passiveColor
         }
     }
 

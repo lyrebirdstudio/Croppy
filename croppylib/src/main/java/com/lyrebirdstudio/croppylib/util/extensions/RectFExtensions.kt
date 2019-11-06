@@ -1,14 +1,13 @@
 package com.lyrebirdstudio.croppylib.util.extensions
 
-import android.graphics.RectF
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.graphics.RectF
 import android.view.MotionEvent
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.lyrebirdstudio.croppylib.util.model.AnimatableRectF
 import com.lyrebirdstudio.croppylib.util.model.Corner
 import com.lyrebirdstudio.croppylib.util.model.Edge
-import com.lyrebirdstudio.croppylib.util.model.SizeF
 import kotlin.math.hypot
 
 fun AnimatableRectF.animateTo(target: AnimatableRectF, onUpdate: (RectF) -> Unit = {}) {

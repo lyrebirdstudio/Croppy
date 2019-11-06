@@ -30,10 +30,10 @@ class CroppyActivityViewModel(val app: Application) : AndroidViewModel(app) {
             is CropRequest.Manual -> {
                 disposable.add(
                     BitmapUtils
-                    .saveBitmap(croppedBitmapData, cropRequest.destinationUri.toFile())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { saveBitmapLiveData.value = cropRequest.destinationUri })
+                        .saveBitmap(croppedBitmapData, cropRequest.destinationUri.toFile())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe { saveBitmapLiveData.value = cropRequest.destinationUri })
             }
             is CropRequest.Auto -> {
                 val destinationUri = FileCreator.createFile(
@@ -47,10 +47,10 @@ class CroppyActivityViewModel(val app: Application) : AndroidViewModel(app) {
 
                 disposable.add(
                     BitmapUtils
-                    .saveBitmap(croppedBitmapData, destinationUri.toFile())
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { saveBitmapLiveData.value = destinationUri })
+                        .saveBitmap(croppedBitmapData, destinationUri.toFile())
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe { saveBitmapLiveData.value = destinationUri })
 
             }
         }

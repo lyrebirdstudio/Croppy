@@ -4,15 +4,15 @@ import android.content.Context
 import android.graphics.RectF
 import android.text.Spannable
 import android.text.SpannableString
-import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio
-import com.lyrebirdstudio.croppylib.inputview.SizeInputData
-import com.lyrebirdstudio.croppylib.inputview.SizeInputViewType
-import kotlin.math.roundToInt
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import androidx.core.content.ContextCompat
+import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio
 import com.lyrebirdstudio.croppylib.R
+import com.lyrebirdstudio.croppylib.inputview.SizeInputData
+import com.lyrebirdstudio.croppylib.inputview.SizeInputViewType
 import com.lyrebirdstudio.croppylib.main.CroppyTheme
+import kotlin.math.roundToInt
 
 data class CropFragmentViewState(
     val croppyTheme: CroppyTheme = CroppyTheme.default(),
