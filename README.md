@@ -106,7 +106,7 @@ allprojects {
 ```
 ```groovy
 dependencies {
-      implementation 'com.github.lyrebirdstudio:Croppy:0.1'
+      implementation 'com.github.lyrebirdstudio:Croppy:0.2'
 }
 ```
 
