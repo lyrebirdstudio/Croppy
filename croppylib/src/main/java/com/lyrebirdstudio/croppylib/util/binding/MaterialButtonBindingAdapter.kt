@@ -5,8 +5,6 @@ import androidx.databinding.BindingAdapter
 import com.google.android.material.button.MaterialButton
 
 @BindingAdapter("bindingTintColor")
-fun materialButtonBackgroundTintColor(materialButton: MaterialButton, colorRes: Int) {
-    materialButton.backgroundTintList =
-        ContextCompat.getColorStateList(materialButton.context, colorRes)
-
+fun MaterialButton.backgroundTintColor(colorRes: Int) {
+    backgroundTintList = ContextCompat.getColorStateList(context, colorRes)
 }
