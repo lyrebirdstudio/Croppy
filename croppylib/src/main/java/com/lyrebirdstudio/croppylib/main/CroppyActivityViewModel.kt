@@ -1,6 +1,7 @@
 package com.lyrebirdstudio.croppylib.main
 
 import android.app.Application
+import android.graphics.Rect
 import android.net.Uri
 import androidx.core.net.toFile
 import androidx.core.net.toUri
@@ -16,13 +17,15 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+typealias CropUriRectPair = Pair<Uri, Rect>
+
 class CroppyActivityViewModel(val app: Application) : AndroidViewModel(app) {
 
     private val disposable = CompositeDisposable()
 
-    private val saveBitmapLiveData = MutableLiveData<Uri>()
+    private val saveBitmapLiveData = MutableLiveData<CropUriRectPair>()
 
-    fun getSaveBitmapLiveData(): LiveData<Uri> = saveBitmapLiveData
+    fun getSaveBitmapLiveData(): LiveData<CropUriRectPair> = saveBitmapLiveData
 
     fun saveBitmap(cropRequest: CropRequest, croppedBitmapData: CroppedBitmapData) {
 
@@ -33,7 +36,7 @@ class CroppyActivityViewModel(val app: Application) : AndroidViewModel(app) {
                     .saveBitmap(croppedBitmapData, cropRequest.destinationUri.toFile())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { saveBitmapLiveData.value = cropRequest.destinationUri })
+                    .subscribe { saveBitmapLiveData.value = cropRequest.destinationUri to croppedBitmapData.croppingRect })
             }
             is CropRequest.Auto -> {
                 val destinationUri = FileCreator.createFile(
@@ -50,7 +53,7 @@ class CroppyActivityViewModel(val app: Application) : AndroidViewModel(app) {
                     .saveBitmap(croppedBitmapData, destinationUri.toFile())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe { saveBitmapLiveData.value = destinationUri })
+                    .subscribe { saveBitmapLiveData.value = destinationUri to croppedBitmapData.croppingRect })
 
             }
         }

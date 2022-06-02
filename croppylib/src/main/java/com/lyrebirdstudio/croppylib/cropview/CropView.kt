@@ -16,6 +16,7 @@ import com.lyrebirdstudio.croppylib.util.model.Edge.*
 import kotlin.math.max
 import android.graphics.Bitmap
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toRect
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio.*
 import com.lyrebirdstudio.croppylib.ui.CroppedBitmapData
 import com.lyrebirdstudio.croppylib.R
@@ -417,7 +418,7 @@ class CropView @JvmOverloads constructor(
         val croppedBitmapRect = getCropSizeOriginal()
 
         if (bitmapRect.intersect(croppedBitmapRect).not()) {
-            return CroppedBitmapData(croppedBitmap = bitmap)
+            return CroppedBitmapData(croppedBitmap = bitmap, croppingRect = croppedBitmapRect.toRect())
         }
 
         val cropLeft = if (croppedBitmapRect.left.roundToInt() < bitmapRect.left) {
@@ -448,7 +449,7 @@ class CropView @JvmOverloads constructor(
             val croppedBitmap = Bitmap.createBitmap(
                 it, cropLeft, cropTop, cropRight - cropLeft, cropBottom - cropTop
             )
-            return CroppedBitmapData(croppedBitmap = croppedBitmap)
+            return CroppedBitmapData(croppedBitmap = croppedBitmap, croppingRect = Rect(cropLeft, cropTop, cropRight, cropBottom))
         }
 
         throw IllegalStateException("Bitmap is null.")

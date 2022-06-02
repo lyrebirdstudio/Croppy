@@ -43,9 +43,15 @@ class CroppyActivity : AppCompatActivity() {
                 .commitAllowingStateLoss()
         }
 
-
-        viewModel.getSaveBitmapLiveData().observe(this, Observer {
-            setResult(Activity.RESULT_OK, Intent().apply { data = it })
+        viewModel.getSaveBitmapLiveData().observe(this, Observer { (uri, rect) ->
+            setResult(
+                Activity.RESULT_OK,
+                Intent()
+                    .apply {
+                        data = uri
+                        putExtra(KEY_CROPPING_RECT_STRING_EXTRA, rect.flattenToString())
+                    }
+            )
             finish()
         })
     }
@@ -53,6 +59,8 @@ class CroppyActivity : AppCompatActivity() {
     companion object {
 
         private const val KEY_CROP_REQUEST = "KEY_CROP_REQUEST"
+
+        private const val KEY_CROPPING_RECT_STRING_EXTRA = "KEY_CROPPING_RECT_STRING_EXTRA"
 
         fun newIntent(context: Context, cropRequest: CropRequest): Intent {
             return Intent(context, CroppyActivity::class.java)
