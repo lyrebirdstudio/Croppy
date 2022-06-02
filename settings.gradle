@@ -1,2 +1,2 @@
-include ':app', ':croppylib', ':aspectratiorecyclerviewlib'
+include ':croppylib', ':aspectratiorecyclerviewlib'
 rootProject.name='Croppy'
