@@ -1,6 +1,7 @@
 package com.lyrebirdstudio.croppylib.ui
 
 import android.app.Application
+import android.graphics.Rect
 import android.graphics.RectF
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData

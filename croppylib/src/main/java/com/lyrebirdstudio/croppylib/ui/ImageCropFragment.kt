@@ -79,7 +79,12 @@ class ImageCropFragment : Fragment() {
 
         viewModel
             .getResizedBitmapLiveData()
-            .observe(this, Observer { binding.cropView.setBitmap(it.bitmap) })
+            .observe(this, Observer {
+                binding.cropView.setBitmap(
+                    it.bitmap,
+                    viewModel.getCropRequest()?.initialCropRect
+                )
+            })
 
     }
 

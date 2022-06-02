@@ -17,6 +17,7 @@ import kotlin.math.max
 import android.graphics.Bitmap
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.toRect
+import androidx.core.graphics.toRectF
 import com.lyrebirdstudio.aspectratiorecyclerviewlib.aspectratio.model.AspectRatio.*
 import com.lyrebirdstudio.croppylib.ui.CroppedBitmapData
 import com.lyrebirdstudio.croppylib.R
@@ -301,7 +302,7 @@ class CropView @JvmOverloads constructor(
      */
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        initialize()
+        initialize(null)
     }
 
     /**
@@ -387,7 +388,7 @@ class CropView @JvmOverloads constructor(
      * Set bitmap from outside of this view.
      * Calculates bitmap rect and bitmap min rect.
      */
-    fun setBitmap(bitmap: Bitmap?) {
+    fun setBitmap(bitmap: Bitmap?, initialCropRect: Rect?) {
         this.bitmap = bitmap
 
         bitmapRect.set(
@@ -400,7 +401,7 @@ class CropView @JvmOverloads constructor(
         val bitmapMinRectSize = max(bitmapRect.width(), bitmapRect.height()) / MAX_SCALE
         bitmapMinRect.set(0f, 0f, bitmapMinRectSize, bitmapMinRectSize)
 
-        initialize()
+        initialize(initialCropRect)
 
         requestLayout()
         invalidate()
@@ -488,7 +489,7 @@ class CropView @JvmOverloads constructor(
     /**
      * Initialize
      */
-    private fun initialize() {
+    private fun initialize(initialCropRect: Rect?) {
 
         viewWidth = measuredWidth.toFloat() - (marginInPixelSize * 2)
 
@@ -500,7 +501,7 @@ class CropView @JvmOverloads constructor(
 
         initializeBitmapMatrix()
 
-        initializeCropRect()
+        initializeCropRect(initialCropRect)
 
         onInitialized?.invoke()
 
@@ -722,9 +723,11 @@ class CropView @JvmOverloads constructor(
     /**
      * Initializes crop rect with bitmap.
      */
-    private fun initializeCropRect() {
-        val rect = RectF(0f, 0f, bitmapRect.width(), bitmapRect.height())
-        bitmapMatrix.mapRect(cropRect, rect)
+    private fun initializeCropRect(initialCropRect: Rect?) {
+        bitmapMatrix.mapRect(
+            cropRect,
+            initialCropRect?.toRectF() ?: RectF(0f, 0f, bitmapRect.width(), bitmapRect.height())
+        )
     }
 
     /**
